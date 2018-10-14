@@ -3,7 +3,7 @@ package com.zugaldia.adafruit.motorhat.library;
 import android.util.Log;
 
 import com.google.android.things.pio.I2cDevice;
-import com.google.android.things.pio.PeripheralManagerService;
+import com.google.android.things.pio.PeripheralManager;
 
 import java.io.IOException;
 
@@ -57,7 +57,7 @@ public class AdafruitPwm {
     try {
       // Attempt to access the I2C device
       Log.d(LOG_TAG, String.format("Connecting to I2C device %s @ 0x%02X.", deviceName, address));
-      PeripheralManagerService manager = new PeripheralManagerService();
+      PeripheralManager manager = PeripheralManager.getInstance();
       i2c = manager.openI2cDevice(deviceName, address);
     } catch (IOException e) {
       Log.w(LOG_TAG, "Unable to access I2C device:", e);
